@@ -17,7 +17,7 @@ lsMl is a GO package for machine learning.
 
 ---------------------------------------
 
-## Installation
+### Installation
 Simple install the package to your [$GOPATH](https://github.com/golang/go/wiki/GOPATH "GOPATH") with the [go tool](https://golang.org/cmd/go/ "go command") from shell:
 ```bash
 $ go get -u github.com/lvsaroha/lsMl.go
