@@ -1,5 +1,9 @@
 package lsMl
 
+// A machine learning package
+// By love saroha (lvsaroha@gmail.com)
+// GNU General Public License v3.0
+
 // Imported packages
 import (
 	"math"

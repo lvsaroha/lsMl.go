@@ -1,8 +1,10 @@
 package lsMl
 
-import (
-//"fmt"
-)
+// A machine learning package
+// By love saroha (lvsaroha@gmail.com)
+// GNU General Public License v3.0
+
+import ()
 
 // Model structure
 type ModelObject struct {
