@@ -2,17 +2,30 @@
 lsMl is a GO package for machine learning.
 ###### By love saroha (lvsaroha@gmail.com)
 
+---------------------------------------
+
+## Features
+  * Lightweight and Fast
+  * Native Go implementation. No C-bindings, just pure Go
+  * Support for tensor operations like (Multiply, Divide, Add, Subtract, Square ...)
+  * Supports sequential models 
+  * Supports loss functions like (Mean Square Error)
+  * Supports opitmizer algorithms like (Gradient Descent)
+
+## Requirements
+  * Go 1.9 or higher. We aim to support the 3 latest versions of Go.
+
+---------------------------------------
+
 ## Installation
-
-Use this command to get this package.
-
+Simple install the package to your [$GOPATH](https://github.com/golang/go/wiki/GOPATH "GOPATH") with the [go tool](https://golang.org/cmd/go/ "go command") from shell:
 ```bash
-go get -u github.com/lvsaroha/lsMl.go
+$ go get -u github.com/lvsaroha/lsMl.go
 ```
+Make sure [Git is installed](https://git-scm.com/downloads) on your machine and in your system's `PATH`.
 
-# Usage
-
-## Creating a tensor object in lsML.go
+---------------------------------------
+#### Creating a tensor object in lsMl.go
 
 Tensor function to create a tensor object
 `lsMl.Tensor( shape , values?)`<br />
