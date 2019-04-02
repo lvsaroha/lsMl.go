@@ -7,7 +7,7 @@ lsMl is a GO package for machine learning.
 ### Features
   * Lightweight and Fast
   * Native Go implementation. No C-bindings, just pure Go
-  * Support for tensor operations like (Multiply, Divide, Add, Subtract, Square ...)
+  * Support for [tensor](#Creating a tensor object in lsMl.go) operations like (Multiply, Divide, Add, Subtract, Square ...)
   * Supports sequential models 
   * Supports loss functions like (Mean Square Error)
   * Supports opitmizer algorithms like (Gradient Descent)
