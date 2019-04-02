@@ -28,9 +28,9 @@ Make sure [Git is installed](https://git-scm.com/downloads) on your machine and 
 ### Creating a tensor object in lsMl.go
 
 **Tensor()** function to create a tensor object
-**`lsMl.Tensor( shape , values?)`<br />
-*Supported type for shape is []int and for values ([]int , []float64 , [][]int , [][]float64)*
-**
+**`lsMl.Tensor( shape , values?)`**<br />
+***Supported type for shape is []int and for values ([]int , []float64 , [][]int , [][]float64)***
+
 
 ```Golang    
     lsMl.Tensor([]int)
@@ -54,8 +54,8 @@ Make sure [Git is installed](https://git-scm.com/downloads) on your machine and 
 
 ##### Random
 **Random()** function to generate random values between given range
-`lsMl.Tensor([]int).Random( min? , max? , floor? )`<br />
-*Supported types for all arguments (float64)*
+**`lsMl.Tensor([]int).Random( min? , max? , floor? )`**<br />
+***Supported types for all arguments (float64)***
 > Default values for minimum , maximum and floor are (-1, 1, false)
 
 ```Golang    
@@ -80,8 +80,8 @@ Make sure [Git is installed](https://git-scm.com/downloads) on your machine and 
 
 ##### Addition
 **Add()** function to add two tensor objects
-`TensorObject.Add(TensorObject)`<br />
-*Supported types for argument (TensorObject)*
+**`TensorObject.Add(TensorObject)`**<br />
+***Supported types for argument (TensorObject)***
 <br>
 >For addition of two tensor object , if none of them is a scalar than the shape of the both tensors must be same for element wise addition.
 
@@ -110,8 +110,8 @@ Make sure [Git is installed](https://git-scm.com/downloads) on your machine and 
 
 ##### Subtraction
 **Sub()** function to subtract value of one tensor from another
-`TensorObject.Sub(TensorObject)`<br />
-*Supported types for argument (TensorObject)*
+**`TensorObject.Sub(TensorObject)`**<br />
+***Supported types for argument (TensorObject)***
 <br>
 >For subtraction of two tensor object , if none of them is a scalar than the shape of the both tensors must be same for element wise subtraction.
 
@@ -140,8 +140,8 @@ Make sure [Git is installed](https://git-scm.com/downloads) on your machine and 
 
 ##### Multiply
 **Mul()** function to multiply values of two tensor objects
-`TensorObject.Mul(TensorObject)`<br />
-*Supported types for argument (TensorObject)*
+**`TensorObject.Mul(TensorObject)`**<br />
+***Supported types for argument (TensorObject)***
 <br>
 >For multiplication of two tensor object , if none of them is a scalar than the shape of the both tensors must be same for element wise multiplication (if both are matrix than hadamard product is calculated).<br>
 If both tensor are matrix and their shapes are first(3x2) second(2x3) than the resultant matrix is (3x3) after multiplication.
@@ -180,8 +180,8 @@ If both tensor are matrix and their shapes are first(3x2) second(2x3) than the r
 
 ##### Division
 **Div()** function to divide value of one tensor from another
-`TensorObject.Div(TensorObject)`<br />
-*Supported types for argument (TensorObject)*
+**`TensorObject.Div(TensorObject)`**<br />
+***Supported types for argument (TensorObject)***
 <br>
 >For division of two tensor object , if none of them is a scalar than the shape of the both tensors must be same for element wise division.
 
@@ -212,9 +212,9 @@ If both tensor are matrix and their shapes are first(3x2) second(2x3) than the r
 
 ### Tensor functions
 
-##### Print
+##### `Print`
 **Print()** function prints values of the tensor in terminal
-`TensorObject.Print()`<br />
+**`TensorObject.Print()`**<br />
 
 ```Golang
     m := lsMl.Tensor([3,2]int).Random(0, 10, true)
@@ -224,9 +224,9 @@ If both tensor are matrix and their shapes are first(3x2) second(2x3) than the r
     // Shows values of m in terminal like [[2.0, 1.0], [4.0, 7.0], [8.0, 1.0]] matrix(3x2)
 ```
 
-##### Transpose
+##### `Transpose`
 **Transpose()** function rotate the tensor
-`TensorObject.Transpose()`<br />
+**`TensorObject.Transpose()`**<br />
 > If a tensor contains scalar value than transpose of the tensor returns same tensor
 
 ```Golang
@@ -236,9 +236,9 @@ If both tensor are matrix and their shapes are first(3x2) second(2x3) than the r
     r := m.Transpose()
     // Returns a matrix of shape(2x3)
 ```
-##### Map
+##### `Map`
 **Map()** function creates a tensor from a given tensor according to condition provided in callback
-`TensorObject.Map(callback)`<br />
+**`TensorObject.Map(callback)`**<br />
 > Callback is a function which gets a value of the tensor as a argument and return a new value
 
 ```Golang
@@ -250,7 +250,7 @@ If both tensor are matrix and their shapes are first(3x2) second(2x3) than the r
 ```
 ---------------------------------------
 
-##### Example of logistic regression using tensor operations
+#### `Example of logistic regression using tensor operations`
 > In regression analysis, logistic regression (or logit regression) is estimating the parameters of a logistic model; it is a form of binomial regression. 
 
 ```Golang
@@ -284,7 +284,7 @@ If both tensor are matrix and their shapes are first(3x2) second(2x3) than the r
 ##### Creating a model object 
 
 **Model()** function to create a model object
-`lsMl.Model()`
+**`lsMl.Model()`**
 
 ```Golang
      m := lsMl.Model()
@@ -294,7 +294,7 @@ If both tensor are matrix and their shapes are first(3x2) second(2x3) than the r
 ##### Adding layers to the model object
 
 **AddLayer()** function add layer to model object
-`ModelObject.AddLayer(config)`<br>
+**`ModelObject.AddLayer(config)`**<br>
 > Config argument takes information about Units , Activation function and InputShape using LayerConfig Object. InputShape is required only for first layer config.
 Default value for activation is sigmoid.  
 
@@ -312,7 +312,7 @@ Default value for activation is sigmoid.
 ##### Making the model for usage
 
 **Make()** function makes the model with given configuration
-`ModelObject.Make(config)`<br>
+**`ModelObject.Make(config)`**<br>
 > Config argument takes information about Loss function , Optimizer  and LearningRate using ModelConfig Object.
 Default values for Loss function , Optimizer and LearningRate are ("meanSquareError" , "sgd", 0.2). 
 
@@ -333,7 +333,7 @@ Default values for Loss function , Optimizer and LearningRate are ("meanSquareEr
 ##### Training the model
 
 **Train()** function to train the model with given configuration
-`ModelObject.Train(inputs , outputs , config)`<br>
+**`ModelObject.Train(inputs , outputs , config)`**<br>
 > Config argument takes information about Epochs , BatchSize  and Shuffle using TrainConfig Object.
 Default values for Epochs , BatchSize and Shuffle are (100 , 1, false).
 
@@ -360,7 +360,7 @@ Default values for Epochs , BatchSize and Shuffle are (100 , 1, false).
 ##### Predicting with model
 
 **Predict()** function predicts the output for a given input
-`ModelObject.Predict(input)`<br>
+**`ModelObject.Predict(input)`**<br>
 > Input argument is a tensor object
 
 ```Golang
