@@ -27,7 +27,7 @@ Make sure [Git is installed](https://git-scm.com/downloads) on your machine and 
 ---------------------------------------
 ### Creating a tensor object in lsMl.go
 
-Tensor function to create a tensor object
+**Tensor()** function to create a tensor object
 `lsMl.Tensor( shape , values?)`<br />
 *Supported type for shape is []int and for values ([]int , []float64 , [][]int , [][]float64)*
 
@@ -207,6 +207,8 @@ If both tensor are matrix and their shapes are first(3x2) second(2x3) than the r
     // Returns a matrix of shape 3x2 with values of m divided by values of m2        
 ```
 
+---------------------------------------
+
 ### Tensor functions
 
 ##### Print
@@ -248,6 +250,7 @@ If both tensor are matrix and their shapes are first(3x2) second(2x3) than the r
 ---------------------------------------
 
 ##### Example of logistic regression using tensor operations
+> In regression analysis, logistic regression (or logit regression) is estimating the parameters of a logistic model; it is a form of binomial regression. 
 
 ```Golang
     // Inputs , outputs and parameters 
@@ -277,3 +280,109 @@ If both tensor are matrix and their shapes are first(3x2) second(2x3) than the r
 
 ### How to use models in lsMl
 
+##### Creating a model object 
+
+**Model()** function to create a model object
+`lsMl.Model()`
+
+```Golang
+     m := lsMl.Model()
+     // Returns a model object
+```
+
+##### Adding layers to the model object
+
+**AddLayer()** function add layer to model object
+`ModelObject.AddLayer(config)`<br>
+> Config argument takes information about Units , Activation function and InputShape using LayerConfig Object. InputShape is required only for first layer config.
+Default value for activation is sigmoid.  
+
+```Golang
+     m := lsMl.Model()
+     // Returns a model object
+
+     m.AddLayer(lsMl.LayerConfig{InputShape: []int{2} , Units: 3, Activation: "relu"})
+     // Add layer to model m with units 3 and activation function relu
+
+     m.AddLayer(lsMl.LayerConfig{Units: 1})
+     // Add another layer to model m with units 2 and activation function sigmoid
+```
+
+##### Making the model for usage
+
+**Make()** function makes the model with given configuration
+`ModelObject.Make(config)`<br>
+> Config argument takes information about Loss function , Optimizer  and LearningRate using ModelConfig Object.
+Default values for Loss function , Optimizer and LearningRate are ("meanSquareError" , "sgd", 0.2). 
+
+```Golang
+     m := lsMl.Model()
+     // Returns a model object
+
+     m.AddLayer(lsMl.LayerConfig{InputShape: []int{2} , Units: 3, Activation: "relu"})
+     // Add layer to model m with units 3 and activation function relu
+
+     m.AddLayer(lsMl.LayerConfig{Units: 1})
+     // Add another layer to model m with units 2 and activation function sigmoid
+
+     m.Make(lsMl.ModelConfig{Loss: "meanSquareError", Optimizer: "sgd", LearningRate: 0.2})
+     // Makes the model with given values of loss function , optimizer and learning rate
+```
+
+##### Training the model
+
+**Train()** function to train the model with given configuration
+`ModelObject.Train(inputs , outputs , config)`<br>
+> Config argument takes information about Epochs , BatchSize  and Shuffle using TrainConfig Object.
+Default values for Epochs , BatchSize and Shuffle are (100 , 1, false).
+
+```Golang
+     m := lsMl.Model()
+     // Returns a model object
+
+     m.AddLayer(lsMl.LayerConfig{InputShape: []int{2} , Units: 3, Activation: "relu"})
+     // Add layer to model m with units 3 and activation function relu
+
+     m.AddLayer(lsMl.LayerConfig{Units: 1})
+     // Add another layer to model m with units 2 and activation function sigmoid
+
+     m.Make(lsMl.ModelConfig{Loss: "meanSquareError", Optimizer: "sgd", LearningRate: 0.2})
+     // Makes the model with given values of loss function , optimizer and learning rate
+
+    inputs := lsMl.Tensor([]int{4, 2}, [][]float64{[]float64{0, 0}, []float64{1, 0}, []float64{0, 1}, []float64{1, 1}})
+    outputs := lsMl.Tensor([]int{4}, []float64{0, 1, 1, 0}) // Desired output of XOR GATE
+
+    m.Train(inputs, outputs, lsMl.TrainConfig{Epochs: 5000, BatchSize: 1, Shuffle: true})
+    // Trains the model according to given configuration
+```
+
+##### Predicting with model
+
+**Predict()** function predicts the output for a given input
+`ModelObject.Predict(input)`<br>
+> Input argument is a tensor object
+
+```Golang
+     m := lsMl.Model()
+     // Returns a model object
+
+     m.AddLayer(lsMl.LayerConfig{InputShape: []int{2} , Units: 3, Activation: "relu"})
+     // Add layer to model m with units 3 and activation function relu
+
+     m.AddLayer(lsMl.LayerConfig{Units: 1})
+     // Add another layer to model m with units 2 and activation function sigmoid
+
+     m.Make(lsMl.ModelConfig{Loss: "meanSquareError", Optimizer: "sgd", LearningRate: 0.2})
+     // Makes the model with given values of loss function , optimizer and learning rate
+
+    inputs := lsMl.Tensor([]int{4, 2}, [][]float64{[]float64{0, 0}, []float64{1, 0}, []float64{0, 1}, []float64{1, 1}})
+    outputs := lsMl.Tensor([]int{4}, []float64{0, 1, 1, 0}) // Desired output of XOR GATE
+
+    m.Train(inputs, outputs, lsMl.TrainConfig{Epochs: 5000, BatchSize: 1, Shuffle: true})
+    // Trains the model according to given configuration
+
+    m.Predict(lsMl.Tensor([]int{2}, []float64{0, 0})).Print() // Prints 0.011401 
+    m.Predict(lsMl.Tensor([]int{2}, []float64{1, 0})).Print() // Prints 0.912271 
+    m.Predict(lsMl.Tensor([]int{2}, []float64{0, 1})).Print() // Prints 0.939822 
+    m.Predict(lsMl.Tensor([]int{2}, []float64{1, 1})).Print() // Prints 0.020241 
+```
