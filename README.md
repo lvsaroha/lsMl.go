@@ -51,9 +51,11 @@ Tensor function to create a tensor object
     // Returns a matrix of shape 3x2 with all values [[2, 3], [4, 5], [6, 7]]    
 ```
 
-Random function to generate random values between given range
+##### Random
+**Random()** function to generate random values between given range
 `lsMl.Tensor([]int).Random( min? , max? , floor? )`<br />
 *Supported types for all arguments (float64)*
+> Default values for minimum , maximum and floor are (-1, 1, false)
 
 ```Golang    
     v := lsMl.Tensor([3]int)
@@ -76,11 +78,11 @@ Random function to generate random values between given range
 ### Tensor operations
 
 ##### Addition
-Add function to add two tensor objects
+**Add()** function to add two tensor objects
 `TensorObject.Add(TensorObject)`<br />
 *Supported types for argument (TensorObject)*
 <br>
-For addition of two tensor object , if none of them is a scalar than the shape of the both tensors must be same for element wise addition.
+>For addition of two tensor object , if none of them is a scalar than the shape of the both tensors must be same for element wise addition.
 
 ```Golang    
     v := lsMl.Tensor([]int)
@@ -106,11 +108,11 @@ For addition of two tensor object , if none of them is a scalar than the shape o
 ```
 
 ##### Subtraction
-Sub function to subtract value of one tensor from another
+**Sub()** function to subtract value of one tensor from another
 `TensorObject.Sub(TensorObject)`<br />
 *Supported types for argument (TensorObject)*
 <br>
-For subtraction of two tensor object , if none of them is a scalar than the shape of the both tensors must be same for element wise subtraction.
+>For subtraction of two tensor object , if none of them is a scalar than the shape of the both tensors must be same for element wise subtraction.
 
 ```Golang    
     v := lsMl.Tensor([]int)
@@ -136,11 +138,11 @@ For subtraction of two tensor object , if none of them is a scalar than the shap
 ```
 
 ##### Multiply
-Mul function to multiply values of two tensor objects
+**Mul()** function to multiply values of two tensor objects
 `TensorObject.Mul(TensorObject)`<br />
 *Supported types for argument (TensorObject)*
 <br>
-For multiplication of two tensor object , if none of them is a scalar than the shape of the both tensors must be same for element wise multiplication (if both are matrix than hadamard product is calculated).<br>
+>For multiplication of two tensor object , if none of them is a scalar than the shape of the both tensors must be same for element wise multiplication (if both are matrix than hadamard product is calculated).<br>
 If both tensor are matrix and their shapes are first(3x2) second(2x3) than the resultant matrix is (3x3) after multiplication.
 
 ```Golang    
