@@ -1,5 +1,4 @@
 ### lsMl.go package for machine learning
-lsMl is a GO package for machine learning.
 ###### By love saroha (lvsaroha@gmail.com)
 
 ---------------------------------------
@@ -27,6 +26,7 @@ Make sure [Git is installed](https://git-scm.com/downloads) on your machine and 
 ---------------------------------------
 ### Creating a tensor object in lsMl.go
 
+### `Tensor`
 **Tensor()** function to create a tensor object
 **`lsMl.Tensor( shape , values?)`**<br />
 ***Supported type for shape is []int and for values ([]int , []float64 , [][]int , [][]float64)***
@@ -52,7 +52,7 @@ Make sure [Git is installed](https://git-scm.com/downloads) on your machine and 
     // Returns a matrix of shape 3x2 with all values [[2, 3], [4, 5], [6, 7]]    
 ```
 
-##### Random
+### `Random`
 **Random()** function to generate random values between given range
 **`lsMl.Tensor([]int).Random( min? , max? , floor? )`**<br />
 ***Supported types for all arguments (float64)***
@@ -78,7 +78,7 @@ Make sure [Git is installed](https://git-scm.com/downloads) on your machine and 
 
 ### Tensor operations
 
-##### Addition
+### `Addition`
 **Add()** function to add two tensor objects
 **`TensorObject.Add(TensorObject)`**<br />
 ***Supported types for argument (TensorObject)***
@@ -108,7 +108,7 @@ Make sure [Git is installed](https://git-scm.com/downloads) on your machine and 
     // Returns a matrix of shape 3x2 with added values of m and m2        
 ```
 
-##### Subtraction
+### `Subtraction`
 **Sub()** function to subtract value of one tensor from another
 **`TensorObject.Sub(TensorObject)`**<br />
 ***Supported types for argument (TensorObject)***
@@ -138,7 +138,7 @@ Make sure [Git is installed](https://git-scm.com/downloads) on your machine and 
     // Returns a matrix of shape 3x2 with values of m subtracted by values of m2        
 ```
 
-##### Multiply
+### `Multiply`
 **Mul()** function to multiply values of two tensor objects
 **`TensorObject.Mul(TensorObject)`**<br />
 ***Supported types for argument (TensorObject)***
@@ -178,7 +178,7 @@ If both tensor are matrix and their shapes are first(3x2) second(2x3) than the r
     // Returns a matrix of shape 3x3 with values of m3 multiply by values of m4            
 ```
 
-##### Division
+### `Division`
 **Div()** function to divide value of one tensor from another
 **`TensorObject.Div(TensorObject)`**<br />
 ***Supported types for argument (TensorObject)***
@@ -212,7 +212,7 @@ If both tensor are matrix and their shapes are first(3x2) second(2x3) than the r
 
 ### Tensor functions
 
-##### `Print`
+### `Print`
 **Print()** function prints values of the tensor in terminal
 **`TensorObject.Print()`**<br />
 
@@ -224,7 +224,7 @@ If both tensor are matrix and their shapes are first(3x2) second(2x3) than the r
     // Shows values of m in terminal like [[2.0, 1.0], [4.0, 7.0], [8.0, 1.0]] matrix(3x2)
 ```
 
-##### `Transpose`
+### `Transpose`
 **Transpose()** function rotate the tensor
 **`TensorObject.Transpose()`**<br />
 > If a tensor contains scalar value than transpose of the tensor returns same tensor
@@ -236,7 +236,7 @@ If both tensor are matrix and their shapes are first(3x2) second(2x3) than the r
     r := m.Transpose()
     // Returns a matrix of shape(2x3)
 ```
-##### `Map`
+### `Map`
 **Map()** function creates a tensor from a given tensor according to condition provided in callback
 **`TensorObject.Map(callback)`**<br />
 > Callback is a function which gets a value of the tensor as a argument and return a new value
@@ -250,7 +250,7 @@ If both tensor are matrix and their shapes are first(3x2) second(2x3) than the r
 ```
 ---------------------------------------
 
-#### `Example of logistic regression using tensor operations`
+### `Example of logistic regression using tensor operations`
 > In regression analysis, logistic regression (or logit regression) is estimating the parameters of a logistic model; it is a form of binomial regression. 
 
 ```Golang
@@ -281,7 +281,7 @@ If both tensor are matrix and their shapes are first(3x2) second(2x3) than the r
 
 ### How to use models in lsMl
 
-##### Creating a model object 
+### `Creating a model object` 
 
 **Model()** function to create a model object
 **`lsMl.Model()`**
@@ -291,7 +291,7 @@ If both tensor are matrix and their shapes are first(3x2) second(2x3) than the r
      // Returns a model object
 ```
 
-##### Adding layers to the model object
+### `Adding layers to the model object`
 
 **AddLayer()** function add layer to model object
 **`ModelObject.AddLayer(config)`**<br>
@@ -309,7 +309,7 @@ Default value for activation is sigmoid.
      // Add another layer to model m with units 2 and activation function sigmoid
 ```
 
-##### Making the model for usage
+### `Making the model for usage`
 
 **Make()** function makes the model with given configuration
 **`ModelObject.Make(config)`**<br>
@@ -330,7 +330,7 @@ Default values for Loss function , Optimizer and LearningRate are ("meanSquareEr
      // Makes the model with given values of loss function , optimizer and learning rate
 ```
 
-##### Training the model
+### `Training the model`
 
 **Train()** function to train the model with given configuration
 **`ModelObject.Train(inputs , outputs , config)`**<br>
@@ -357,7 +357,7 @@ Default values for Epochs , BatchSize and Shuffle are (100 , 1, false).
     // Trains the model according to given configuration
 ```
 
-##### Predicting with model
+### `Predicting with model`
 
 **Predict()** function predicts the output for a given input
 **`ModelObject.Predict(input)`**<br>
