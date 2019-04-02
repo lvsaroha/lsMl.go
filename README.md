@@ -75,6 +75,7 @@ Random function to generate random values between given range
 
 ### Tensor operations
 
+##### Addition
 Add function to add two tensor objects
 `TensorObject.Add(TensorObject)`<br />
 *Supported types for argument (TensorObject)*
@@ -104,6 +105,7 @@ For addition of two tensor object , if none of them is a scalar than the shape o
     // Returns a matrix of shape 3x2 with added values of m and m2        
 ```
 
+##### Subtraction
 Sub function to subtract value of one tensor from another
 `TensorObject.Sub(TensorObject)`<br />
 *Supported types for argument (TensorObject)*
@@ -133,6 +135,7 @@ For subtraction of two tensor object , if none of them is a scalar than the shap
     // Returns a matrix of shape 3x2 with values of m subtracted by values of m2        
 ```
 
+##### Multiply
 Mul function to multiply values of two tensor objects
 `TensorObject.Mul(TensorObject)`<br />
 *Supported types for argument (TensorObject)*
